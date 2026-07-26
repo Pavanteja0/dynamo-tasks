@@ -1,0 +1,32 @@
+artifacts = ["/app/report.json"]
+
+[task]
+name = "dynamo/log-report"
+description = "Summarize user server logs and output to a JSON report."
+
+[metadata]
+category = "data_analysis"
+subcategory = "log_parsing"
+task_objective = ["parse_logs", "extract_errors"]
+artifact_type = ["json_report"]
+expert_time_estimate_hours = 0.3
+model_tested = "GPT-4o"
+agent_tested = "Terminus-2"
+difficulty_explanation = "Requires parsing logs, counting total entries, and computing the proportion of error logs."
+solution_explanation = "A shell script uses Python to parse logs and write the correct calculation to report.json."
+verification_explanation = "The verifier checks if the report exists and contains the correct calculated error rate of 0.125."
+
+[verifier]
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 120.0
+
+[environment]
+build_timeout_sec = 600.0
+cpus = 1
+memory_mb = 2048
+storage_mb = 10240
+gpus = 0
+allow_internet = false
+mcp_servers = []

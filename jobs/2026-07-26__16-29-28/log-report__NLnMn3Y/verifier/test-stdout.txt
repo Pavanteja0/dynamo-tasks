@@ -1,0 +1,2 @@
+/tests/test.sh: line 1: log-report/tests/test.sh: No such file or directory
+chmod: cannot access 'log-report/tests/test.sh': No such file or directory
