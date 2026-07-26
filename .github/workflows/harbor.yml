@@ -1,0 +1,26 @@
+name: Harbor CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  run-eval:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Install Harbor
+        run: uv tool install harbor
+
+      - name: Build Docker Image
+        run: docker build -t hb__b93a944920bad2170dd7ad966a524fc1 log-report/environment
+
+      - name: Run Harbor Evaluator
+        run: harbor run -p log-report -a oracle
