@@ -20,6 +20,8 @@ if [ $RESULT -eq 0 ]; then
       "pending": 0,
       "skipped": 2,
       "other": 2,
+      "suite": 1,
+      "start": 1700000000,
       "stop": 1700000005
     },
     "tests": [
@@ -64,8 +66,7 @@ else
       },
       {
         "name": "test_report_exists",
-        "status": "failed",
-        "duration": 5
+        "duration": 10
       }
     ]
   }
